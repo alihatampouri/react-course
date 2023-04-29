@@ -1,6 +1,6 @@
-import { FavoriteBorderOutlined } from "@mui/icons-material";
+import { FavoriteBorderOutlined, StarOutline } from "@mui/icons-material";
 import { Button } from "@mui/material";
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 class Like extends Component {
   state = {};
@@ -9,8 +9,8 @@ class Like extends Component {
     super(props);
     this.state = {
       mainTitle: document.title,
-      count: 0,
-      intervalId: null,
+      like: 0,
+      follow: 0,
     };
   }
 
@@ -21,8 +21,13 @@ class Like extends Component {
     }, 3000);
   }
 
-  componentDidUpdate() {
-    document.title = `liked ${this.state.count} Times`;
+  componentDidUpdate(preveProps, preveStates) {
+    if (preveStates.like !== this.state.like) {
+        document.title = `liked ${this.state.like} Times`;
+    } else if (preveStates.follow !== this.state.follow) {
+        document.title = `followed ${this.state.follow} Times`;
+    }
+    
     setTimeout(() => {
       document.title = this.state.mainTitle;
     }, 3000);
@@ -30,13 +35,24 @@ class Like extends Component {
 
   render() {
     return (
-      <Button
-        variant="outlined"
-        endIcon={<FavoriteBorderOutlined />}
-        onClick={() => this.setState({ count: this.state.count + 1 })}
-      >
-        Like {this.state.count > 0 && this.state.count}
-      </Button>
+      <Fragment>
+        <Button
+          variant="outlined"
+          endIcon={<FavoriteBorderOutlined />}
+          onClick={() => this.setState({ like: this.state.like + 1 })}
+        >
+          Like {this.state.like > 0 && this.state.like}
+        </Button>
+
+        <Button
+          variant="outlined"
+          color="secondary"
+          endIcon={<StarOutline />}
+          onClick={() => this.setState({ follow: this.state.follow + 1 })}
+        >
+          Follow {this.state.follow > 0 && this.state.follow}
+        </Button>
+      </Fragment>
     );
   }
 }
