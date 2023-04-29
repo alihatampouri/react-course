@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ProductList from "./components/ProductList/ProductList";
 import AddPrducts from "./components/AddProduct/AddProduct";
 import Navbar from "./components/Navbar/Navbar";
+import Like from "./components/Like/Like";
 
 function App() {
   const [products, setProducts] = useState([
@@ -64,6 +65,7 @@ function App() {
           onDecrement={decrementProductHandler}
         />
         <AddPrducts onAddProduct={addProductHandler} />
+        <Like />
       </div>
     </div>
   );
