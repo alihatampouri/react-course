@@ -3,27 +3,28 @@ import { Button } from "@mui/material";
 import React, { Component } from "react";
 
 class Like extends Component {
-  state = {
-    count: 0,
-  };
+  state = {};
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      mainTitle: document.title,
+      count: 0,
+      intervalId: null,
+    };
+  }
 
   componentDidMount() {
-    const mainTitle = document.title;
-
-    document.title = `Welcome to ${mainTitle}`;
-
+    document.title = `Welcome to ${this.state.mainTitle}`;
     setTimeout(() => {
-      document.title = mainTitle;
+      document.title = this.state.mainTitle;
     }, 3000);
   }
 
   componentDidUpdate() {
-    const mainTitle = document.title;
-
     document.title = `liked ${this.state.count} Times`;
-    
     setTimeout(() => {
-      document.title = mainTitle;
+      document.title = this.state.mainTitle;
     }, 3000);
   }
 
