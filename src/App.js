@@ -3,6 +3,7 @@ import ProductList from "./components/ProductList/ProductList";
 import AddPrducts from "./components/AddProduct/AddProduct";
 import Navbar from "./components/Navbar/Navbar";
 import Like from "./components/Like/Like";
+import Welcome from "./components/Welcome/Welcome";
 
 function App() {
   const [products, setProducts] = useState([
@@ -58,6 +59,7 @@ function App() {
     <div className="App">
       <Navbar totalItems={products.length} />
       <div className="container md:container md:mx-auto px-4">
+        <Welcome />
         <ProductList
           products={products}
           onRemove={removeProductHandler}
