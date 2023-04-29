@@ -23,11 +23,11 @@ class Like extends Component {
 
   componentDidUpdate(preveProps, preveStates) {
     if (preveStates.like !== this.state.like) {
-        document.title = `liked ${this.state.like} Times`;
+      document.title = `liked ${this.state.like} Times`;
     } else if (preveStates.follow !== this.state.follow) {
-        document.title = `followed ${this.state.follow} Times`;
+      document.title = `followed ${this.state.follow} Times`;
     }
-    
+
     setTimeout(() => {
       document.title = this.state.mainTitle;
     }, 3000);
@@ -36,22 +36,26 @@ class Like extends Component {
   render() {
     return (
       <Fragment>
-        <Button
-          variant="outlined"
-          endIcon={<FavoriteBorderOutlined />}
-          onClick={() => this.setState({ like: this.state.like + 1 })}
-        >
-          Like {this.state.like > 0 && this.state.like}
-        </Button>
+        <div className="inline-block m-2">
+          <Button
+            variant="outlined"
+            endIcon={<FavoriteBorderOutlined />}
+            onClick={() => this.setState({ like: this.state.like + 1 })}
+          >
+            Like {this.state.like > 0 && this.state.like}
+          </Button>
+        </div>
 
-        <Button
-          variant="outlined"
-          color="secondary"
-          endIcon={<StarOutline />}
-          onClick={() => this.setState({ follow: this.state.follow + 1 })}
-        >
-          Follow {this.state.follow > 0 && this.state.follow}
-        </Button>
+        <div className="inline-block m-2">
+          <Button
+            variant="outlined"
+            color="secondary"
+            endIcon={<StarOutline />}
+            onClick={() => this.setState({ follow: this.state.follow + 1 })}
+          >
+            Follow {this.state.follow > 0 && this.state.follow}
+          </Button>
+        </div>
       </Fragment>
     );
   }
