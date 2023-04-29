@@ -7,10 +7,21 @@ class Like extends Component {
     count: 0,
   };
 
+  componentDidMount() {
+    const mainTitle = document.title;
+
+    document.title = `Welcome to ${mainTitle}`;
+
+    setTimeout(() => {
+      document.title = mainTitle;
+    }, 3000);
+  }
+
   componentDidUpdate() {
     const mainTitle = document.title;
-    
+
     document.title = `liked ${this.state.count} Times`;
+    
     setTimeout(() => {
       document.title = mainTitle;
     }, 3000);
