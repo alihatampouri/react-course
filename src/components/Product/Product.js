@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { IconButton } from "@mui/material";
 import {
   AddOutlined,
@@ -6,6 +7,11 @@ import {
 } from "@mui/icons-material";
 
 const Product = ({ product, onDecrement, onIncrement, onRemove }) => {
+  useEffect(()=>{
+    console.log('useEffect in Product component')
+    return () => console.log('unmount in Product component')
+  },[])
+
   return (
     <div className="flex justify-between items-center rounded-xl border-solid border-2 border-gray-200 p-2 ">
       <h2 className="text-lg font-semibold text-slate-900">{product.name}</h2>
