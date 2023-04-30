@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar/Navbar";
 import Like from "./components/Like/Like";
 import Welcome from "./components/Welcome/Welcome";
 import Timer from "./components/Timer/Timer";
+import HoverCounter from "./components/hoc/HoverCounter";
+import ClickCounter from "./components/hoc/ClickCounter";
 
 function App() {
   const [products, setProducts] = useState([
@@ -57,7 +59,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div>
       <Navbar totalItems={products.length} />
       <div className="container md:container md:mx-auto px-4">
         <Welcome />
@@ -70,6 +72,8 @@ function App() {
         <AddPrducts onAddProduct={addProductHandler} />
         <Like />
         <Timer />
+        <HoverCounter />
+        <ClickCounter />
       </div>
     </div>
   );
