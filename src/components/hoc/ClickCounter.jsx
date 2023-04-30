@@ -13,4 +13,4 @@ const ClickCounter = ({count, onIncrement}) => {
   );
 };
 
-export default WithCounter(ClickCounter);
+export default WithCounter(ClickCounter, 5);
