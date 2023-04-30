@@ -4,6 +4,7 @@ import AddPrducts from "./components/AddProduct/AddProduct";
 import Navbar from "./components/Navbar/Navbar";
 import Like from "./components/Like/Like";
 import Welcome from "./components/Welcome/Welcome";
+import Timer from "./components/Timer/Timer";
 
 function App() {
   const [products, setProducts] = useState([
@@ -68,6 +69,7 @@ function App() {
         />
         <AddPrducts onAddProduct={addProductHandler} />
         <Like />
+        <Timer />
       </div>
     </div>
   );
