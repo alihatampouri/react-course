@@ -18,7 +18,7 @@ const Timer = (props) => {
         <span>{status ? `${counter} second` : `Timer hidden`}</span>
         <div>
           <IconButton onClick={() => setStatus((current) => !current)}>
-            {status ? <VisibilityOutlined /> : <VisibilityOffOutlined />}
+            {status ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
           </IconButton>
           <IconButton onClick={() => setCounter(0)}>
             <RestartAltOutlined />
