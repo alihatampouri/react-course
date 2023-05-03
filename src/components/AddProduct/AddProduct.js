@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 
 const AddProduct = (props) => {
-  const nameInput = useRef(null);
+  const nameInput = useRef();
 
   const [newProduct, setNewProduct] = useState({
     id: "",
@@ -19,14 +19,16 @@ const AddProduct = (props) => {
   };
 
   const addNewProduct = () => {
-    setNewProduct({
-      id: "",
-      name: "",
-      price: "",
-      qty: 1,
-    });
-    props.onAddProduct(newProduct);
-    nameInput.current.focus();
+    if (newProduct.name && newProduct.price) {
+      setNewProduct({
+        id: "",
+        name: "",
+        price: "",
+        qty: 1,
+      });
+      props.onAddProduct(newProduct);
+      nameInput.current.focus();
+    }
   };
 
   const handleKeyPress = (event) => {
