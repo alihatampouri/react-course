@@ -1,4 +1,4 @@
-import WithCounter from "./WithCounter";
+import WithCounter from "../hoc/WithCounter";
 
 const HoverCounter = ({ count, onIncrement }) => {
   return (

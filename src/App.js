@@ -5,8 +5,11 @@ import Navbar from "./components/Navbar/Navbar";
 import Like from "./components/Like/Like";
 import Welcome from "./components/Welcome/Welcome";
 import Timer from "./components/Timer/Timer";
-import HoverCounter from "./components/hoc/HoverCounter";
-import ClickCounter from "./components/hoc/ClickCounter";
+import HoverCounter from "./components/Counter/HoverCounter";
+import ClickCounter from "./components/Counter/ClickCounter";
+import UserList from "./components/User/UserList";
+import AddUser from "./components/User/AddUser";
+import UserProvider from "./components/Context/UserProvider";
 
 function App() {
   const [products, setProducts] = useState([
@@ -59,23 +62,27 @@ function App() {
   };
 
   return (
-    <div>
-      <Navbar totalItems={products.length} />
-      <div className="container md:container md:mx-auto px-4">
-        <Welcome />
-        <ProductList
-          products={products}
-          onRemove={removeProductHandler}
-          onIncrement={incrementProductHandler}
-          onDecrement={decrementProductHandler}
-        />
-        <AddPrducts onAddProduct={addProductHandler} />
-        <Like />
-        <Timer />
-        <HoverCounter />
-        <ClickCounter />
-      </div>
-    </div>
+    <>
+      <UserProvider>
+        <Navbar totalItems={products.length} />
+        <div className="container md:container md:mx-auto px-4">
+          <Welcome />
+          <ProductList
+            products={products}
+            onRemove={removeProductHandler}
+            onIncrement={incrementProductHandler}
+            onDecrement={decrementProductHandler}
+          />
+          <AddPrducts onAddProduct={addProductHandler} />
+          <UserList />
+          <AddUser />
+          <Like />
+          <Timer />
+          <HoverCounter />
+          <ClickCounter />
+        </div>
+      </UserProvider>
+    </>
   );
 }
 
