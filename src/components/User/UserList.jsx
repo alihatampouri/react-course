@@ -10,6 +10,7 @@ const UserList = (props) => {
     <>
       {users.map((user) => (
         <User
+          key={user.id}
           firstname={user.firstname}
           lastname={user.lastname}
           job={user.job}
