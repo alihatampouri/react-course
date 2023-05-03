@@ -13,7 +13,7 @@ const Product = ({ product, onDecrement, onIncrement, onRemove }) => {
   },[])
 
   return (
-    <div className="flex justify-between items-center rounded-xl border-solid border-2 border-gray-200 p-2 ">
+    <div className="flex justify-between items-center rounded-xl border-solid border-2 border-gray-200 py-2 px-3">
       <h2 className="text-lg font-semibold text-slate-900">{product.name}</h2>
       <div className="flex flex-col justify-evenly text-secondary-900 text-[10px]">
         <span className="font-sans text-sm">Product Price</span>
