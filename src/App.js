@@ -10,6 +10,8 @@ import ClickCounter from "./components/Counter/ClickCounter";
 import UserList from "./components/User/UserList";
 import AddUser from "./components/User/AddUser";
 import UserProvider from "./components/Context/UserProvider";
+import StepCounter from "./components/Counter/StepCounter";
+import StepProvider from "./components/Context/StepProvider";
 
 function App() {
   const [products, setProducts] = useState([
@@ -78,6 +80,9 @@ function App() {
           <AddUser />
           <Like />
           <Timer />
+          <StepProvider>
+            <StepCounter />
+          </StepProvider>
           <HoverCounter />
           <ClickCounter />
         </div>
