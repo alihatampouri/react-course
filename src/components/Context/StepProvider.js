@@ -18,4 +18,12 @@ const StepProvider = ({ children }) => {
 export default StepProvider;
 
 export const useStep = () => useContext(StepContext);
-export const useStepActions = () => useContext(StepContextDispatcher);
+export const useStepActions = () => {
+  const setStep = useContext(StepContextDispatcher);
+
+  const increment = () => setStep((step) => step + 1);
+
+  const decrement = () => setStep((step) => step > 1 && step - 1);
+
+  return { increment, decrement };
+};
