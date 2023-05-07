@@ -12,6 +12,7 @@ import AddUser from "./components/User/AddUser";
 import UserProvider from "./components/Context/UserProvider";
 import StepCounter from "./components/Counter/StepCounter";
 import StepProvider from "./components/Context/StepProvider";
+import MultiCounter from "./components/MultiCounter/MultiCounter";
 
 function App() {
   const [products, setProducts] = useState([
@@ -79,12 +80,14 @@ function App() {
           <UserList />
           <AddUser />
           <Like />
+          <MultiCounter />
           <Timer />
           <StepProvider>
             <StepCounter />
           </StepProvider>
           <HoverCounter />
           <ClickCounter />
+          
         </div>
       </UserProvider>
     </>
