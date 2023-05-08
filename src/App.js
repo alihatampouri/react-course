@@ -13,6 +13,7 @@ import UserProvider from "./components/Context/UserProvider";
 import StepCounter from "./components/Counter/StepCounter";
 import StepProvider from "./components/Context/StepProvider";
 import MultiCounter from "./components/MultiCounter/MultiCounter";
+import ProductProvider from "./components/Providers/ProductProvider";
 
 function App() {
   const [products, setProducts] = useState([
@@ -66,30 +67,31 @@ function App() {
 
   return (
     <>
-      <UserProvider>
-        <Navbar totalItems={products.length} />
-        <div className="container md:container md:mx-auto px-4">
-          <Welcome />
-          <ProductList
-            products={products}
-            onRemove={removeProductHandler}
-            onIncrement={incrementProductHandler}
-            onDecrement={decrementProductHandler}
-          />
-          <AddPrducts onAddProduct={addProductHandler} />
-          <UserList />
-          <AddUser />
-          <Like />
-          <MultiCounter />
-          <Timer />
-          <StepProvider>
-            <StepCounter />
-          </StepProvider>
-          <HoverCounter />
-          <ClickCounter />
-          
-        </div>
-      </UserProvider>
+      <ProductProvider>
+        <UserProvider>
+          <Navbar totalItems={products.length} />
+          <div className="container md:container md:mx-auto px-4">
+            <Welcome />
+            <ProductList
+              products={products}
+              onRemove={removeProductHandler}
+              onIncrement={incrementProductHandler}
+              onDecrement={decrementProductHandler}
+            />
+            <AddPrducts onAddProduct={addProductHandler} />
+            <UserList />
+            <AddUser />
+            <Like />
+            <MultiCounter />
+            <Timer />
+            <StepProvider>
+              <StepCounter />
+            </StepProvider>
+            <HoverCounter />
+            <ClickCounter />
+          </div>
+        </UserProvider>
+      </ProductProvider>
     </>
   );
 }

@@ -1,4 +1,9 @@
-const Navbar = ({totalItems}) => {
+import { useProducts } from "../Providers/ProductProvider";
+
+const Navbar = () => {
+  const Products = useProducts();
+  const totalItems = Products.length;
+
   return (
     <header className="backdrop-blur flex-none lg:border-b sticky top-0 z-50">
       <div className="max-w-8xl mx-auto">
