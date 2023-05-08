@@ -69,7 +69,7 @@ function App() {
     <>
       <ProductProvider>
         <UserProvider>
-          <Navbar totalItems={products.length} />
+          <Navbar />
           <div className="container md:container md:mx-auto px-4">
             <Welcome />
             <ProductList
