@@ -10,7 +10,41 @@ const initialProducts = [
 ];
 
 const productReduser = (state, action) => {
-  console.log(state, action);
+  let index, allProducts, product;
+
+  switch (action.type) {
+    case "remove":
+      return state.filter((product) => product.id !== action.id);
+
+    case "increment":
+      index = state.findIndex((item) => item.id === action.id);
+
+      product = { ...state[index] };
+      product.qty++;
+
+      allProducts = [...state];
+      allProducts[index] = product;
+
+      index = product = null;
+
+      return allProducts;
+
+    case "decrement":
+      index = state.findIndex((item) => item.id === action.id);
+
+      product = { ...state[index] };
+      product.qty--;
+
+      allProducts = [...state];
+
+      if (product.qty) {
+        allProducts[index] = product;
+      } else {
+        allProducts.splice(index, 1);
+      }
+
+      return allProducts;
+  }
 };
 
 const ProductProvider = ({ children }) => {

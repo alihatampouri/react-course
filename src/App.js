@@ -32,39 +32,6 @@ function App() {
     ]);
   };
 
-  const removeProductHandler = (id) => {
-    const filteredProducts = products.filter((p) => p.id !== id);
-    setProducts(filteredProducts);
-  };
-
-  const incrementProductHandler = (id) => {
-    const index = products.findIndex((item) => item.id === id);
-
-    const product = { ...products[index] };
-    product.qty++;
-
-    const allProducts = [...products];
-    allProducts[index] = product;
-
-    setProducts(allProducts);
-  };
-
-  const decrementProductHandler = (id) => {
-    const index = products.findIndex((item) => item.id === id);
-
-    const product = { ...products[index] };
-    product.qty--;
-
-    if (product.qty) {
-      const allProducts = [...products];
-      allProducts[index] = product;
-
-      setProducts(allProducts);
-    } else {
-      removeProductHandler(id);
-    }
-  };
-
   return (
     <>
       <ProductProvider>
@@ -72,12 +39,7 @@ function App() {
           <Navbar />
           <div className="container md:container md:mx-auto px-4">
             <Welcome />
-            <ProductList
-              products={products}
-              onRemove={removeProductHandler}
-              onIncrement={incrementProductHandler}
-              onDecrement={decrementProductHandler}
-            />
+            <ProductList />
             <AddPrducts onAddProduct={addProductHandler} />
             <UserList />
             <AddUser />
