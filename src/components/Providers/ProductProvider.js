@@ -10,32 +10,30 @@ const initialProducts = [
 ];
 
 const productReduser = (state, action) => {
-  let index, allProducts, product;
-
   switch (action.type) {
-    case "remove":
+    case "remove": {
       return state.filter((product) => product.id !== action.id);
+    }
 
-    case "increment":
-      index = state.findIndex((item) => item.id === action.id);
+    case "increment": {
+      const index = state.findIndex((item) => item.id === action.id);
 
-      product = { ...state[index] };
+      const product = { ...state[index] };
       product.qty++;
 
-      allProducts = [...state];
+      const allProducts = [...state];
       allProducts[index] = product;
 
-      index = product = null;
-
       return allProducts;
+    }
 
-    case "decrement":
-      index = state.findIndex((item) => item.id === action.id);
+    case "decrement": {
+      const index = state.findIndex((item) => item.id === action.id);
 
-      product = { ...state[index] };
+      const product = { ...state[index] };
       product.qty--;
 
-      allProducts = [...state];
+      const allProducts = [...state];
 
       if (product.qty) {
         allProducts[index] = product;
@@ -44,6 +42,7 @@ const productReduser = (state, action) => {
       }
 
       return allProducts;
+    }
   }
 };
 
