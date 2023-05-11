@@ -1,33 +1,27 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import { useProductsDispatch } from "../Providers/ProductProvider";
 
 const AddProduct = (props) => {
+  const dispatch = useProductsDispatch();
+
   const nameInput = useRef();
-
-  const [newProduct, setNewProduct] = useState({
-    id: "",
-    name: "",
-    price: "",
-    qty: 1,
-  });
-
-  const nameHandler = (e) => {
-    setNewProduct({ ...newProduct, name: e.target.value });
-  };
-
-  const priceHandler = (e) => {
-    setNewProduct({ ...newProduct, price: e.target.value });
-  };
+  const priceInput = useRef();
 
   const addNewProduct = () => {
-    if (newProduct.name && newProduct.price) {
-      setNewProduct({
-        id: "",
-        name: "",
-        price: "",
-        qty: 1,
-      });
-      props.onAddProduct(newProduct);
+    const name = nameInput.current.value;
+    const price = priceInput.current.value;
+
+    if (name && price) {
+      nameInput.current.value = priceInput.current.value = "";
       nameInput.current.focus();
+
+      return dispatch({
+        type: "insert",
+        insert: {
+          name: name,
+          price: price,
+        },
+      });
     }
   };
 
@@ -43,17 +37,14 @@ const AddProduct = (props) => {
         type="text"
         placeholder="Name"
         className="px-4 py-2"
-        value={newProduct.name}
-        onChange={nameHandler}
         ref={nameInput}
       ></input>
       <input
-        type="text"
+        type="number"
         placeholder="Price"
         className="px-4 py-2"
-        value={newProduct.price}
-        onChange={priceHandler}
         onKeyDown={handleKeyPress}
+        ref={priceInput}
       ></input>
       <button
         className="mt-2 lg:col-auto sm:col-span-full transition bg-violet-800 px-4 py-2 text-white hover:bg-violet-700 sm:px-8 sm:py-3 rounded-md"

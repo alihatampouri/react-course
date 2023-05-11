@@ -11,6 +11,14 @@ const initialProducts = [
 
 const productReduser = (state, action) => {
   switch (action.type) {
+    case "insert": {
+      const { name, price } = action.insert;
+      return [
+        ...state,
+        { id: state.lenght + 1, name: name, price: price, qty: 1 },
+      ];
+    }
+
     case "remove": {
       return state.filter((product) => product.id !== action.id);
     }
@@ -43,6 +51,9 @@ const productReduser = (state, action) => {
 
       return allProducts;
     }
+
+    default:
+      return state;
   }
 };
 

@@ -16,21 +16,6 @@ import MultiCounter from "./components/MultiCounter/MultiCounter";
 import ProductProvider from "./components/Providers/ProductProvider";
 
 function App() {
-  const [products, setProducts] = useState([
-    { id: 1, name: "mellate eshgh", price: 98000, qty: 5 },
-    { id: 2, name: "asare morakab", price: 45000, qty: 5 },
-    { id: 3, name: "motivation", price: 78000, qty: 5 },
-  ]);
-
-  const addProductHandler = (newProduct) => {
-    setProducts([
-      ...products,
-      {
-        ...newProduct,
-        id: products.length + 1,
-      },
-    ]);
-  };
 
   return (
     <>
@@ -40,7 +25,7 @@ function App() {
           <div className="container md:container md:mx-auto px-4">
             <Welcome />
             <ProductList />
-            <AddPrducts onAddProduct={addProductHandler} />
+            <AddPrducts />
             <UserList />
             <AddUser />
             <Like />
