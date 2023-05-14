@@ -1,0 +1,41 @@
+export const productsData = [
+  {
+    id: 1,
+    name: "iPhone 14 pro max",
+    price: 98000000,
+    qty: 15,
+    capacity: 512,
+    color: ["red", "blue", "green"],
+  },
+  {
+    id: 2,
+    name: "iPhone 14 pro max",
+    price: 120000000,
+    qty: 14,
+    capacity: 1024,
+    color: ["red", "blue", "black", "gold"],
+  },
+  {
+    id: 3,
+    name: "iPhone 14 pro",
+    price: 95000000,
+    qty: 24,
+    capacity: 512,
+    color: ["black", "purple"],
+  },
+  {
+    id: 4,
+    name: "iPhone 14 pro",
+    price: 99000000,
+    qty: 12,
+    capacity: 1024,
+    color: ["red", "black", "purple"],
+  },
+  {
+    id: 5,
+    name: "samsung a70",
+    price: 17000000,
+    qty: 82,
+    color: ["red", "blue", "black", "white"],
+  },
+];
