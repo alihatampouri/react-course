@@ -14,9 +14,9 @@ import StepCounter from "./components/Counter/StepCounter";
 import StepProvider from "./components/Context/StepProvider";
 import MultiCounter from "./components/MultiCounter/MultiCounter";
 import ProductProvider from "./components/Providers/ProductProvider";
+import ProductFilter from "./components/ProductFilter/ProductFilter";
 
 function App() {
-
   return (
     <>
       <ProductProvider>
@@ -24,6 +24,7 @@ function App() {
           <Navbar />
           <div className="container md:container md:mx-auto px-4">
             <Welcome />
+            <ProductFilter />
             <ProductList />
             <AddPrducts />
             <UserList />

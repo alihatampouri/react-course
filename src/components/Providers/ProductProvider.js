@@ -1,13 +1,8 @@
 import { createContext, useContext, useReducer } from "react";
+import { productsData } from "../../data/products";
 
 const productContext = createContext();
 const productActions = createContext();
-
-const initialProducts = [
-  { id: 1, name: "mellate eshgh", price: 98000, qty: 5 },
-  { id: 2, name: "asare morakab", price: 45000, qty: 5 },
-  { id: 3, name: "motivation", price: 78000, qty: 5 },
-];
 
 const productReduser = (state, action) => {
   switch (action.type) {
@@ -52,13 +47,27 @@ const productReduser = (state, action) => {
       return allProducts;
     }
 
+    case "filter": {
+      if (action.on === "color") {
+        if (action.value === "") {
+          return productsData;
+        } else {
+          const filteredProducts = productsData.filter(
+            (product) => product.color.indexOf(action.value) >= 0
+          );
+          return filteredProducts;
+        }
+      }
+      break;
+    }
+
     default:
       return state;
   }
 };
 
 const ProductProvider = ({ children }) => {
-  const [products, dispatch] = useReducer(productReduser, initialProducts);
+  const [products, dispatch] = useReducer(productReduser, productsData);
 
   return (
     <productContext.Provider value={products}>
