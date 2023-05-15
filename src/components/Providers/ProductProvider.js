@@ -49,7 +49,7 @@ const productReduser = (state, action) => {
 
     case "filter": {
       if (action.on === "color") {
-        if (action.value === "") {
+        if (action.value === "all") {
           return productsData;
         } else {
           const filteredProducts = productsData.filter(
@@ -59,6 +59,25 @@ const productReduser = (state, action) => {
         }
       }
       break;
+    }
+
+    case "sort": {
+      if (action.on === "price") {
+        const product = [...state];
+        if (action.value === "low") {
+          return product.sort((a, b) => {
+            if (a.price > b.price) return 1;
+            if (a.price < b.price) return -1;
+            return 0;
+          });
+        } else {
+          return product.sort((a, b) => {
+            if (a.price < b.price) return 1;
+            if (a.price > b.price) return -1;
+            return 0;
+          });
+        }
+      }
     }
 
     default:

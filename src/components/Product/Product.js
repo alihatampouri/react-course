@@ -17,7 +17,7 @@ const Product = ({ product, onDecrement, onIncrement, onRemove }) => {
       <h2 className="text-lg font-semibold text-slate-900">{product.name}</h2>
       <div className="flex flex-col justify-evenly text-secondary-900 text-[10px]">
         <span className="font-sans text-sm">Product Price</span>
-        <span className="opacity-50">{product.price} IRT</span>
+        <span className="opacity-50">{new Intl.NumberFormat().format(product.price)} IRT</span>
       </div>
       <div className="rounded-md border-solid border">
         <IconButton
