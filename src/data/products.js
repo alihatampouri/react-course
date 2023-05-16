@@ -97,18 +97,18 @@ export const productsData = [
   },
   {
     id: 13,
-    title: "samsung a70",
+    title: "Samsung a70",
     price: 17000000,
     stock: 82,
-    brand: "samsung",
+    brand: "Samsung",
     color: ["red", "blue", "black", "white"],
   },
   {
     id: 14,
-    title: "huawey mate 10 lite",
+    title: "Huawey mate 10 lite",
     price: 5000000,
     stock: 27,
-    brand: "huawey",
+    brand: "Huawey",
     color: ["silver", "gold"],
   },
 ];
