@@ -15,7 +15,6 @@ import StepProvider from "./components/Context/StepProvider";
 import MultiCounter from "./components/MultiCounter/MultiCounter";
 import ProductProvider from "./components/Providers/ProductProvider";
 import ProductFilter from "./components/ProductFilter/ProductFilter";
-import ProductSearch from "./components/ProductSearch/ProductSearch";
 
 function App() {
   return (
@@ -25,7 +24,6 @@ function App() {
           <Navbar />
           <div className="container md:container md:mx-auto px-4">
             <Welcome />
-            <ProductSearch />
             <ProductFilter />
             <ProductList />
             <AddPrducts />

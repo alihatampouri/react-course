@@ -1,4 +1,3 @@
-import ProductSearch from "../ProductSearch/ProductSearch";
 import { useProducts } from "../Providers/ProductProvider";
 
 const Navbar = () => {

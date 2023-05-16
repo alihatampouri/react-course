@@ -81,14 +81,16 @@ const productReduser = (state, action) => {
     }
 
     case "search": {
-      if (action.on === "title" && action.value !== "") {
-        console.log(action.value);
-        return productsData.filter(
-          (product) =>
-            product.title.toLowerCase().indexOf(action.value.toLowerCase()) >= 0
-        );
+      if (action.value === "") {
+        return state;
       } else {
-        return productsData;
+        if (action.on === "title") {
+          const value = action.value.toLowerCase();
+
+          return state.filter((product) =>
+            product.title.toLowerCase().includes(value)
+          );
+        }
       }
     }
 
