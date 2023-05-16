@@ -7,10 +7,10 @@ const productActions = createContext();
 const productReduser = (state, action) => {
   switch (action.type) {
     case "insert": {
-      const { name, price } = action.insert;
+      const { title, price } = action.insert;
       return [
         ...state,
-        { id: state.lenght + 1, name: name, price: price, qty: 1 },
+        { id: state.lenght + 1, title: title, price: price, stock: 1 },
       ];
     }
 
@@ -22,7 +22,7 @@ const productReduser = (state, action) => {
       const index = state.findIndex((item) => item.id === action.id);
 
       const product = { ...state[index] };
-      product.qty++;
+      product.stock++;
 
       const allProducts = [...state];
       allProducts[index] = product;
@@ -34,11 +34,11 @@ const productReduser = (state, action) => {
       const index = state.findIndex((item) => item.id === action.id);
 
       const product = { ...state[index] };
-      product.qty--;
+      product.stock--;
 
       const allProducts = [...state];
 
-      if (product.qty) {
+      if (product.stock) {
         allProducts[index] = product;
       } else {
         allProducts.splice(index, 1);
