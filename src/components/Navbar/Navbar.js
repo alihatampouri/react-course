@@ -1,3 +1,4 @@
+import ProductSearch from "../ProductSearch/ProductSearch";
 import { useProducts } from "../Providers/ProductProvider";
 
 const Navbar = () => {
@@ -14,9 +15,9 @@ const Navbar = () => {
               Ali always succeeds
             </span>
             <div className="lg:flex ml-auto">
-              <button className="bg-slate-400/10 hover:bg-slate-400/20 items-center leading-5 px-3 py-1 rounded-full text-xs text-slate-800">
+              <div className="cursor-default bg-slate-400/10 hover:bg-slate-400/20 items-center leading-5 px-3 py-1 rounded-full text-xs text-slate-800">
                 {totalItems ? `${totalItems} product` : `There is no product`}
-              </button>
+              </div>
             </div>
           </div>
         </div>
