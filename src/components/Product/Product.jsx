@@ -7,42 +7,63 @@ import {
 } from "@mui/icons-material";
 
 const Product = ({ product, onDecrement, onIncrement, onRemove }) => {
-  useEffect(()=>{
-    console.log('useEffect in Product component')
-    return () => console.log('unmount in Product component')
-  },[])
+  useEffect(() => {
+    console.log("useEffect in Product component");
+    return () => console.log("unmount in Product component");
+  }, []);
 
   return (
-    <div className="flex justify-between items-center rounded-xl border-solid border-2 border-gray-200 py-2 px-3">
-      <h2 className="text-lg font-semibold text-slate-900">{product.title}</h2>
-      <div className="flex flex-col justify-evenly text-secondary-900 text-[10px]">
-        <span className="font-sans text-sm">Product Price</span>
-        <span className="opacity-50">{new Intl.NumberFormat().format(product.price)} IRT</span>
+    <div className="flex-auto p-6 border border-gray-300 rounded-3xl">
+      <div className="flex justify-between">
+        <div className="text-left">
+          <div className="text-xs text-gray-400 mb-2">{product.brand}</div>
+          <h1 className="flex-auto font-medium text-slate-900">
+            {product.title}
+          </h1>
+          <span className="mt-2 font-bold text-violet-600">
+            {new Intl.NumberFormat().format(product.price)} IRT
+          </span>
+        </div>
+        <div className="text-sm font-medium text-slate-400">
+          stock: {product.stock}
+        </div>
       </div>
-      <div className="rounded-md border-solid border">
+      <div className="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200">
+        <div className="space-x-2 flex text-xs">
+          <span className="text-gray-500 font-bold">colors: </span>
+          {product.color.map((color) => (
+            <span className="text-gray-500">{color}</span>
+          ))}
+        </div>
+      </div>
+      <div className="flex space-x-4 text-sm font-medium">
+        <div className="flex-auto flex space-x-4">
+          <IconButton
+            size="small"
+            onClick={onDecrement}
+            color="default"
+            aria-label="decrement"
+          >
+            <RemoveOutlined fontSize="inherit" />
+          </IconButton>
+          <IconButton
+            size="small"
+            onClick={onIncrement}
+            color="default"
+            aria-label="increment"
+          >
+            <AddOutlined fontSize="inherit" />
+          </IconButton>
+        </div>
         <IconButton
-          onClick={onDecrement}
-          color="default"
-          aria-label="decrement"
+          size="small"
+          onClick={onRemove}
+          color="error"
+          aria-label="Remove Product"
         >
-          <RemoveOutlined />
-        </IconButton>
-        <span>{product.stock}</span>
-        <IconButton
-          onClick={onIncrement}
-          color="default"
-          aria-label="increment"
-        >
-          <AddOutlined />
+          <DeleteOutline fontSize="inherit" />
         </IconButton>
       </div>
-      <IconButton
-        onClick={onRemove}
-        color="error"
-        aria-label="Remove Product"
-      >
-        <DeleteOutline />
-      </IconButton>
     </div>
   );
 };
